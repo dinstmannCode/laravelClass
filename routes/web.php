@@ -15,15 +15,11 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('contato/{id?}', function($id = null){
-    return "Contato id= $id";
-});
+// rota pegando ou nao um id add na rul usando uma Controller
+Route::get('contato/{id?}', ['uses'=>'ContatoController@index']);
 
-Route::post('/contato', function(){
-    dd($_POST);
-    return "Contato POST";
-});
+// rota chamada apartir de um form POST usando uma Controller
+Route::post('/contato', ['uses'=>'ContatoController@criar']);
 
-Route::put('/contato', function(){
-    return "Contato PUT";
-});
+// rota chamada apartir de um form PUT usando uma Controller
+Route::put('/contato', ['uses'=>'ContatoController@editar']);
